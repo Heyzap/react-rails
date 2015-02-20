@@ -46,12 +46,14 @@ module React
         FileUtils.mkdir_p(tmp_path)
 
         FileUtils.cp(::React::Source.bundled_path_for(filename),
-                     tmp_path.join('react.js'))
-        FileUtils.chmod("u=rw,g=rw", tmp_path.join("react.js")) if File.stat(tmp_path.join("react.js")).owned?
+                    tmp_path.join('react.js'))
+        # FileUtils.chmod("u=rw,g=rw", 
+        #             tmp_path.join("react.js")) if File.stat(tmp_path.join("react.js")).owned?
 
         FileUtils.cp(::React::Source.bundled_path_for('JSXTransformer.js'),
-                     tmp_path.join('JSXTransformer.js'))
-        FileUtils.chmod("u=rw,g=rw", tmp_path.join("JSXTransformer.js")) if File.stat(tmp_path.join("react.js")).owned?
+                    tmp_path.join('JSXTransformer.js'))
+        # FileUtils.chmod("u=rw,g=rw",
+        #             tmp_path.join("JSXTransformer.js")) if File.stat(tmp_path.join("JSXTransformer.js")).owned?
         
         app.assets.prepend_path tmp_path
 
