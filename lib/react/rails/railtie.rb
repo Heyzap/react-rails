@@ -47,11 +47,11 @@ module React
 
         FileUtils.cp(::React::Source.bundled_path_for(filename),
                      tmp_path.join('react.js'))
-        FileUtils.chmod("u=wr,g=rw", tmp_path.join("react.js"))
+        FileUtils.chmod(0777, tmp_path.join("react.js"))
 
         FileUtils.cp(::React::Source.bundled_path_for('JSXTransformer.js'),
                      tmp_path.join('JSXTransformer.js'))
-        FileUtils.chmod("u=wr,g=rw", tmp_path.join("JSXTransformer.js"))
+        FileUtils.chmod(0777, tmp_path.join("JSXTransformer.js"))
         
         app.assets.prepend_path tmp_path
 
