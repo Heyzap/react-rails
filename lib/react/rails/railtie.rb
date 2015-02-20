@@ -44,10 +44,15 @@ module React
                    (app.config.react.addons ? '-with-addons' : '') +
                    (app.config.react.variant == :production ? '.min.js' : '.js')
         FileUtils.mkdir_p(tmp_path)
+
         FileUtils.cp(::React::Source.bundled_path_for(filename),
                      tmp_path.join('react.js'))
+        FileUtils.chmod("u=wr,g=rw", tmp_path.join("react.js"))
+
         FileUtils.cp(::React::Source.bundled_path_for('JSXTransformer.js'),
                      tmp_path.join('JSXTransformer.js'))
+        FileUtils.chmod("u=wr,g=rw", tmp_path.join("JSXTransformer.js"))
+        
         app.assets.prepend_path tmp_path
 
         # Allow overriding react files that are not based on environment
